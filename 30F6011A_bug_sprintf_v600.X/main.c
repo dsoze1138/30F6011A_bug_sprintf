@@ -88,11 +88,9 @@
 /*
 ** Check if baud error greater than 2.5 percent
 */
-#if 0
-    #define REAL_BAUDRATE ( FCY / ( U1_BRGH_SCALE * ( U1_BRGREG + 1L) ) )
-    #if (REAL_BAUDRATE > (U1_BAUD + (U1_BAUD * 25L) / 1000L)) || (REAL_BAUDRATE < (U1_BAUD - (U1_BAUD * 25L) / 1000L))
-    #error UART baudrate error greater than 2.5 percent for the FCY and U1_BAUD. Correct values in uart.c file.
-    #endif
+#define REAL_BAUDRATE ( FCY / ( U1_BRGH_SCALE * ( U1_BRGREG + 1L) ) )
+#if (REAL_BAUDRATE > (U1_BAUD + (U1_BAUD * 25L) / 1000L)) || (REAL_BAUDRATE < (U1_BAUD - (U1_BAUD * 25L) / 1000L))
+#error UART baudrate error greater than 2.5 percent for the FCY and U1_BAUD.
 #endif
 #undef REAL_BAUDRATE
 /*
